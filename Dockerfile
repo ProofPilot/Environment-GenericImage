@@ -13,7 +13,7 @@ RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
 #RUN rpm -i https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
 RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
-RUN yum install -y php56u php56u-common php56u-fpm php56u-cli php56u-devel \
+RUN yum --disablerepo=epel install -y  php56u php56u-common php56u-fpm php56u-cli php56u-devel \
   php56u-gd php56u-intl php56u-process php56u-mcrypt php56u-pdo php56u-mysqlnd php56u-redis php56u-xml php56u-mbstring \
   php56u-pecl-jsonc php56u-pecl-mongo php56u-pecl-geoip php56u-pecl-memcache php56u-pecl-jsonc-devel php56u-pecl-apcu
 
