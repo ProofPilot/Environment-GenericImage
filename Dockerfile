@@ -15,8 +15,9 @@ RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7
 
 RUN yum install -y php56u php56u-common php56u-fpm php56u-cli php56u-devel \
   php56u-gd php56u-intl php56u-process php56u-mcrypt php56u-pdo php56u-mysqlnd php56u-redis php56u-xml php56u-mbstring \
-  php56u-pecl-jsonc php56u-pecl-mongo php56u-pecl-geoip php56u-pecl-memcache php56u-pecl-jsonc-devel php56u-pecl-apcu \
-  nginx supervisor git mailcap fuse-libs wget \
+  php56u-pecl-jsonc php56u-pecl-mongo php56u-pecl-geoip php56u-pecl-memcache php56u-pecl-jsonc-devel php56u-pecl-apcu
+
+RUN yum install -y  nginx supervisor git mailcap fuse-libs wget \
   gcc gcc-c++ libstdc++-devel \
   curl-devel libxml2-devel openssl-devel \
   bind-utils net-tools iproute
