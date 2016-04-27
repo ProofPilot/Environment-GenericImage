@@ -6,9 +6,9 @@ MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 
 # Install dependencies
 
-RUN yum install -y epel-release
+#RUN yum install -y epel-release
 
-#RUN rpm -i http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+RUN rpm -i http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
 #RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
 RUN rpm -i https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
 RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
