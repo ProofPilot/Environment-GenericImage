@@ -66,6 +66,6 @@ RUN cd /usr/src && \
 RUN curl -sS https://getcomposer.org/installer | php  \
  && mv composer.phar /usr/local/bin/composer
 	
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["/usr/local/bin/start.sh"] 
