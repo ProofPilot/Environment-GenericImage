@@ -42,7 +42,7 @@ RUN ln -sf /dev/stdout /var/log/php-fpm/error.log
 RUN ln -sf /dev/stdout /var/log/php-fpm/www-slow.log
 RUN ln -sf /dev/stdout /var/log/php-fpm/www-error.log
 
-RUN chmod -R a+w,a+r /var/log
+RUN chmod -R a+w,a+r /var/log /var/cache /var/run 
 
 #================================
 
