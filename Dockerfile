@@ -32,7 +32,8 @@ COPY files/php.ini /etc/php.ini
 COPY files/php-fpm.conf /etc/php-fpm.conf
 COPY files/www.conf /etc/php-fpm.d/www.conf
 COPY files/start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh \
+
+RUN chmod +x /usr/local/bin/start.sh
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
