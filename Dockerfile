@@ -20,7 +20,7 @@ RUN yum install -y php56u php56u-common php56u-fpm php56u-cli php56u-devel \
 RUN yum install -y  nginx supervisor git mailcap fuse-libs wget \
   gcc gcc-c++ libstdc++-devel \
   curl-devel libxml2-devel openssl-devel \
-  bind-utils net-tools iproute
+  bind-utils net-tools iproute mysql
   
 RUN yum clean all   
 
