@@ -7,8 +7,7 @@ MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 # Install dependencies
 
 RUN yum install -y epel-release
-RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm \
- && rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
 RUN yum install -y  nginx supervisor git mailcap fuse-libs wget \
           gcc gcc-c++ libstdc++-devel \
