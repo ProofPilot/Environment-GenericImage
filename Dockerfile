@@ -18,7 +18,7 @@ COPY etc/ /etc/
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/php-fpm/error.log \
- && ln -sf /dev/stdout /var/log/php-fpm/www-slow.log
+ && ln -sf /dev/stdout /var/log/php-fpm/www-slow.log \
  && ln -sf /dev/stdout /var/log/php-fpm/www-error.log
 
 RUN chmod -R a+w,a+r /var/log /var/cache /var/run 
