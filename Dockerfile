@@ -1,4 +1,4 @@
-FROM openshift-local-registry/test/generic-test:latest
+FROM openshift-local-registry/test/generic-image:latest
 MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 
 #==========================================
