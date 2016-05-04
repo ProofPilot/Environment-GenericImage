@@ -8,7 +8,8 @@ MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 
 RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
 
-RUN yum install -y php56u php56u-common php56u-fpm php56u-cli php56u-devel \
+RUN yum makecache \
+ && yum install -y php56u php56u-common php56u-fpm php56u-cli php56u-devel \
     php56u-gd php56u-intl php56u-process php56u-mcrypt php56u-pdo php56u-mysqlnd php56u-redis php56u-xml php56u-mbstring \
     php56u-pecl-jsonc php56u-pecl-mongo php56u-pecl-geoip php56u-pecl-memcache php56u-pecl-jsonc-devel php56u-pecl-apcu \
  && yum clean all
