@@ -10,6 +10,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc\n'\
  > /etc/yum.repos.d/mongodb-org-3.2.repo
 
 
-RUN yum install -y mongodb-org-shell mongodb-org-tools
+RUN yum makecache \ 
+ && yum install -y mongodb-org-shell mongodb-org-tools
 
 RUN gem install aptible-cli
