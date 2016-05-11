@@ -12,7 +12,7 @@ ENV PROJECT=/sites/frontend
 RUN yum install -y epel-release
 #RUN rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
+#RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
 #RUN rpm -i https://dl.iuscommunity.org/pub/ius/stable/CentOS/7/x86_64/ius-release-1.0-14.ius.centos7.noarch.rpm
 
 RUN yum install -y  supervisor git mailcap fuse-libs wget \
@@ -20,8 +20,8 @@ RUN yum install -y  supervisor git mailcap fuse-libs wget \
   curl-devel libxml2-devel openssl-devel \
   bind-utils net-tools iproute mysql
   
-RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm \
- && yum install -y  nginx
+#RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm \
+# && yum install -y  nginx
 
 RUN yum install -y centos-release-scl-rh \
  && yum install -y devtoolset-3 devtoolset-3-gcc devtoolset-3-binutils devtoolset-3-gcc-c++
