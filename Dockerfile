@@ -41,10 +41,10 @@ RUN echo "gem: --no-document" >> ~/.gemrc \
 RUN npm install -g bower gulp
  
 
-RUN rm /etc/nginx/conf.d/default.conf \
- && rm /etc/nginx/conf.d/example_ssl.conf \
- && rm -rf /root/.npm
-# && npm cache clean
+#RUN rm /etc/nginx/conf.d/default.conf \
+# && rm /etc/nginx/conf.d/example_ssl.conf \
+# && rm -rf /root/.npm
+## && npm cache clean
 
 # Forward request and error logs to docker log collector
 #-------------------------------------------------------
