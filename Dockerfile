@@ -1,4 +1,4 @@
-FROM openshift-local-registry/test/generic-test:latest
+FROM proofpilot/environment-genericimage:latest
 MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 
 #==========================================
