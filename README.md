@@ -1,1 +1,1 @@
-# Generic Docker Image for API and LimeSurvey
+# Docker Image for Frontend (Researcher and Participant)
