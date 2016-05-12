@@ -16,7 +16,8 @@ RUN yum makecache \
 
 COPY etc/ /etc/    
 
-# forward request and error logs to docker log collector
+# Forward request and error logs to docker log collector
+#-------------------------------------------------------
 RUN ln -sf /dev/stdout /var/log/php-fpm/error.log \
  && ln -sf /dev/stdout /var/log/php-fpm/www-slow.log \
  && ln -sf /dev/stdout /var/log/php-fpm/www-error.log
