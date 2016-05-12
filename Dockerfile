@@ -1,11 +1,9 @@
 FROM proofpilot/environment-genericimage:latest
 MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
-
-#==========================================
-
+#=======================================================
 
 # Install dependencies
-
+#-------------------------------------------------------
 RUN rpm -i https://centos7.iuscommunity.org/ius-release.rpm
 
 RUN yum makecache \
@@ -24,28 +22,6 @@ RUN ln -sf /dev/stdout /var/log/php-fpm/error.log \
 
 RUN chmod -R a+w,a+r /var/log /var/cache /var/run 
 
-#================================
-
-
-
-RUN cd /usr/src && \
-    wget https://github.com/libfuse/libfuse/releases/download/fuse-2.9.6/fuse-2.9.6.tar.gz && \
-    tar xzf fuse-2.9.6.tar.gz && \
-    cd fuse-2.9.6 && \
-    ./configure --prefix=/usr/local && \
-    make && make install && \
-    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig && \
-    ldconfig && \
-    modprobe fuse || \
-    cd /usr/src/ && \
-	git clone https://github.com/s3fs-fuse/s3fs-fuse.git &&\ 
-	cd s3fs-fuse && \
-    ./autogen.sh && ./configure --prefix=/usr/local && \
-    make && make install
-	
+# Composer
 RUN curl -sS https://getcomposer.org/installer | php  \
  && mv composer.phar /usr/local/bin/composer
-	
-EXPOSE 8080
-
-CMD ["/usr/local/bin/start.sh"] 
