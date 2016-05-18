@@ -23,9 +23,9 @@ echo $TMP_DIR
 aptible db:tunnel $S_NAME --port 12345 &
 SOURCE=$!
 echo Source process ID: $SOURCE
-sleep 30
+sleep 20
 
-/usr/bin/mongodump \
+/usr/bin/mongodump -v \
     --host 127.0.0.1 \
     --port 12345 \
     --username aptible \
@@ -33,12 +33,14 @@ sleep 30
     --db db \
     --out $TMP_DIR
           
+kill $SOURCE
+
 aptible db:tunnel $D_NAME --port 12346 &
 DESTIN=$!
 echo Destination process ID $DESTIN
-sleep 30
+sleep 20
 
-kill $SOURCE 
+./mo-db-clean.sh $D_PASS
 
 /usr/bin/mongorestore \
     --host 127.0.0.1 \
@@ -49,7 +51,7 @@ kill $SOURCE
     --username aptible \
     --password $D_PASS \
     --db db \
-    $TMP_DIR
+    $TMP_DIR/db
 
 
 kill $DESTIN
