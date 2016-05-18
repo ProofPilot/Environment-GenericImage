@@ -17,7 +17,9 @@ enabled=1\n\
 gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc\n'\
  > /etc/yum.repos.d/mongodb-org-3.2.repo
 
-RUN yum install -y  nginx supervisor git mailcap fuse-libs wget \
+RUN yum install -y  vim-enhanced wget \
+          nginx supervisor \
+          git mailcap fuse-libs \
           gcc gcc-c++ libstdc++-devel \
           curl-devel libxml2-devel openssl-devel \
           bind-utils net-tools iproute \
@@ -26,14 +28,12 @@ RUN yum install -y  nginx supervisor git mailcap fuse-libs wget \
  && yum clean all
   
 COPY etc/ /etc/
-
-COPY files/start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+COPY usr/ /usr/
 
 # Forward request and error logs to docker log collector
 #-------------------------------------------------------
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
- && ln -sf /dev/stdout /var/log/nginx/error.log
+#RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+# && ln -sf /dev/stdout /var/log/nginx/error.log
 
 RUN chmod -R a+w,a+r /var/log /var/cache /var/run 
 
