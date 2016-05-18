@@ -3,19 +3,22 @@ MAINTAINER Volodymyr Sheptytsky <vshept@hotmail.com>
 
 #==========================================
 
+ENV MONGODB_VER=3.2
+
 
 # Install dependencies
 
-RUN yum install -y epel-release
+RUN yum makecache \
+ && yum install -y epel-release
 RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 # MongoDB Official Repo
-RUN echo $'[mongodb-org-3.2]\n\
+RUN echo $'[mongodb-org-$MONGODB_VER]\n\
 name=MongoDB Repository\n\
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/\n\
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/$MONGODB_VER/x86_64/\n\
 gpgcheck=1\n\
 enabled=1\n\
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc\n'\
- > /etc/yum.repos.d/mongodb-org-3.2.repo
+gpgkey=https://www.mongodb.org/static/pgp/server-$MONGODB_VER.asc\n'\
+ > /etc/yum.repos.d/mongodb-org-$MONGODB_VER.repo
 
 RUN yum install -y  vim-enhanced wget \
           nginx supervisor \
