@@ -12,7 +12,7 @@ RUN rpm -i http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7
 # MongoDB Official Repo
 RUN echo -e "[mongodb-org-${MONGODB_VER}]\n\
 name=MongoDB Repository\n\
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/${MONGODB_VER}/x86_64/\n\
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/${MONGODB_VER}/x86_64/\n\
 gpgcheck=1\n\
 enabled=1\n\
 gpgkey=https://www.mongodb.org/static/pgp/server-${MONGODB_VER}.asc\n" \
