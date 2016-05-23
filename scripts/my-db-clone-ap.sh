@@ -20,11 +20,11 @@ D_PASS=$4
 aptible db:tunnel $D_NAME --port 12346 &
 DESTIN=$!
 echo Destination process ID $DESTIN
-sleep 10
+sleep 20
 aptible db:tunnel $S_NAME --port 12345 &
 SOURCE=$!
 echo Source process ID: $SOURCE
-sleep 10
+sleep 20
 
 
 

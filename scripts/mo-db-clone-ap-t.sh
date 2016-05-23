@@ -17,17 +17,9 @@ D_PASS=$4
 #$DESTIN=$(aptible db:tunnel $D_NAME --port 12346 &)
 
 NOW_IS=`%Y.%m.%d_%H.%M.%S`
-#TMP_DIR=/tmp/mongodb-backup-$NOW_IS
+TMP_DIR=/tmp/mongodb-backup-$NOW_IS
 echo $TMP_DIR
 
-
-aptible db:tunnel $D_NAME --port 12346 &
-DESTIN=$!
-echo Destination process ID $DESTIN
-sleep 20
-
-
-./mo-db-clean-ap.sh $D_PASS > /tmp/mongodb-clean-dest-db-$NOW_IS.log
 
 aptible db:tunnel $S_NAME --port 12345 &
 SOURCE=$!
@@ -39,9 +31,20 @@ sleep 20
     --port 12345 \
     --username aptible \
     --password $S_PASS \
+    --db db \
+    --gzip \
     --oplog \
-    --archive
-    --db db | \
+    --out $TMP_DIR
+          
+kill $SOURCE
+
+aptible db:tunnel $D_NAME --port 12346 &
+DESTIN=$!
+echo Destination process ID $DESTIN
+sleep 20
+
+./mo-db-clean-ap.sh $D_PASS > /tmp/mongodb-clean-dest-db-$NOW_IS.log
+
 /usr/bin/mongorestore \
     --host 127.0.0.1 \
     --port 12346 \
@@ -50,11 +53,12 @@ sleep 20
     --sslAllowInvalidCertificates \
     --username aptible \
     --password $D_PASS \
+    --db db \
     --oplogReplay \
-    --archive
+    $TMP_DIR/db
 
 
-kill $DESTIN $SOURCE
+kill $DESTIN
 
-#rm -rf $TMP_DIR
+rm -rf $TMP_DIR
 
