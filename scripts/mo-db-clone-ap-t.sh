@@ -16,7 +16,7 @@ D_PASS=$4
 #$SOURCE=$(aptible db:tunnel $S_NAME --port 12345 &)
 #$DESTIN=$(aptible db:tunnel $D_NAME --port 12346 &)
 
-NOW_IS=`%Y.%m.%d_%H.%M.%S`
+NOW_IS=`date +%Y.%m.%d_%H.%M.%S`
 TMP_DIR=/tmp/mongodb-backup-$NOW_IS
 echo $TMP_DIR
 
