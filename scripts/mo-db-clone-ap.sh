@@ -33,10 +33,11 @@ echo "Destination process ID: " $DESTIN
 
 
 ./mo-db-clean-ap.sh $D_PASS > /tmp/mongodb-clean-dest-db-$NOW_IS.log
+cat /tmp/mongodb-clean-dest-db-$NOW_IS.log
 
 mo-db-tunnel $S_NAME 12345
 SOURCE=$T_PID
-echo Source process ID: $SOURCE
+echo "Source process ID: " $SOURCE
 
 /usr/bin/mongodump \
     --host 127.0.0.1 \
@@ -53,7 +54,8 @@ echo Source process ID: $SOURCE
     --sslAllowInvalidCertificates \
     --username aptible \
     --password $D_PASS \
-    --archive
+    --archive \
+    --db db
 
 
 kill $DESTIN $SOURCE

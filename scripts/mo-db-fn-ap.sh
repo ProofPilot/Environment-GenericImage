@@ -5,7 +5,7 @@ mo-db-tunnel() {
     local DB_PORT=$2
     aptible db:tunnel $DB_NAME --port $DB_PORT &
     T_PID=$!
-    sleep 25
+    sleep 30
 }
 
 mo-db-clean () {
